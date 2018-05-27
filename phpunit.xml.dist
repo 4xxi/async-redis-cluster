@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="vendor/autoload.php">
+    <php>
+        <ini name="error_reporting" value="-1" />
+        <env name="REDIS_CONNECTION_STRING" value="127.0.0.1:7000" />
+    </php>
+
+    <testsuites>
+        <testsuite name="functional">
+            <directory>./Tests/Functional</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>

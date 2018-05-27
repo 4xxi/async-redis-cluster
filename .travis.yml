@@ -1,0 +1,34 @@
+sudo: required
+
+language: php
+
+services:
+    - docker
+
+php:
+    - '7.1'
+
+branches:
+    only:
+        - develop
+        - master
+        
+env:
+  - DOCKER_COMPOSE_VERSION=1.21.2
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+before_script:
+    - composer install --no-interaction --dev
+    - bash create_docker_compose.sh native
+    - cat docker-compose.yml
+    - docker-compose up -d
+    - sleep 10
+    - docker-compose logs
+
+script:
+    - ./vendor/bin/phpunit -vvv
