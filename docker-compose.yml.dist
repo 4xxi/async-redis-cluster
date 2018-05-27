@@ -46,5 +46,5 @@ services:
     build:
       context: ./docker/redis-cluster-setting
     environment:
-      REDIS_NODES: "127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005"
+      REDIS_NODES: "<DOCKER_HOST>:7000 <DOCKER_HOST>:7001 <DOCKER_HOST>:7002 <DOCKER_HOST>:7003 <DOCKER_HOST>:7004 <DOCKER_HOST>:7005"
       REDIS_REPLICAS: 1
