@@ -30,4 +30,4 @@ before_script:
     - docker-compose logs
 
 script:
-    - phpunit
+    - ./vendor/bin/phpunit
