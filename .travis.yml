@@ -11,6 +11,7 @@ php:
 branches:
     only:
         - develop
+        - master
         
 env:
   - DOCKER_COMPOSE_VERSION=1.21.2
