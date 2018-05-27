@@ -25,6 +25,8 @@ before_script:
     - composer install --no-interaction --dev
     - docker-compose -f docker-compose-travis.yml up -d
     - sleep 10
+    - docker-compose -f docker-compose-travis.yml logs
+    - ifconfig
 
 script:
     - phpunit
