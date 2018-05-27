@@ -1,0 +1,13 @@
+{
+    "name": "4xxi/async-redis-cluster",
+    "description": "Asynchronous redis cluster client",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "dsysolyatin",
+            "email": "dsysolyatin@4xxi.com"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,50 @@
+version: '2'
+services:
+  redis1:
+    build:
+      context: ./docker/redis
+    environment:
+      REDIS_PORT: 7000
+    network_mode: "host"
+
+  redis2:
+    build:
+      context: ./docker/redis
+    environment:
+      REDIS_PORT: 7001
+    network_mode: "host"
+
+  redis3:
+    build:
+      context: ./docker/redis
+    environment:
+      REDIS_PORT: 7002
+    network_mode: "host"
+
+  redis4:
+    build:
+      context: ./docker/redis
+    environment:
+      REDIS_PORT: 7003
+    network_mode: "host"
+
+  redis5:
+    build:
+      context: ./docker/redis
+    environment:
+      REDIS_PORT: 7004
+    network_mode: "host"
+
+  redis6:
+    build:
+      context: ./docker/redis
+    environment:
+      REDIS_PORT: 7005
+    network_mode: "host"
+
+  redis-cluster-setting:
+    build:
+      context: ./docker/redis-cluster-setting
+    environment:
+      REDIS_NODES: "192.168.99.100:7000 192.168.99.100:7001 192.168.99.100:7002 192.168.99.100:7003 192.168.99.100:7004 192.168.99.100:7005"
+      REDIS_REPLICAS: 1
