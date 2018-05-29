@@ -6,11 +6,9 @@ use React\Promise\Deferred;
 
 class Command
 {
-    const STATUS_INQUEUE = 0;
-
-    const STATUS_EXECUTING = 1;
-
-    const STATUS_DONE = 2;
+    public const STATUS_INQUEUE = 0;
+    public const STATUS_EXECUTING = 1;
+    public const STATUS_DONE = 2;
 
     /**
      * @var string

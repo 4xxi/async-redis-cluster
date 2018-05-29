@@ -77,6 +77,10 @@ class Connection
 
     public function write(string $data)
     {
+        if (null === $this->connection) {
+            $this->connect();
+        }
+
         $this->connection->then(function (ConnectionInterface $connection) use ($data) {
             $connection->write($data);
         });
