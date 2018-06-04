@@ -40,12 +40,17 @@ class Connection
      * @param LoopInterface               $loop
      * @param ListenerConnectionInterface $listenerConnection
      * @param string                      $connectionUrl
+     * @param null|Connector              $connector
      */
-    public function __construct(LoopInterface $loop, ListenerConnectionInterface $listenerConnection, string $connectionUrl)
-    {
+    public function __construct(
+        LoopInterface $loop,
+        ListenerConnectionInterface $listenerConnection,
+        string $connectionUrl,
+        ?Connector $connector = null
+    ) {
         $this->loop = $loop;
         $this->listenerConnection = $listenerConnection;
-        $this->connector = new Connector($loop);
+        $this->connector = $connector ?? new Connector($loop);
         $this->connectionUrl = $connectionUrl;
         $this->connection = null;
     }
