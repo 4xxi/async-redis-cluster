@@ -13,6 +13,7 @@ use React\EventLoop\LoopInterface;
 use React\Promise\Deferred;
 use React\Promise\Promise;
 use React\Socket\ConnectionInterface;
+use React\Socket\Connector;
 
 class DummyClient implements ListenerConnectionInterface
 {
@@ -44,16 +45,18 @@ class DummyClient implements ListenerConnectionInterface
     /**
      * DummyClient constructor.
      *
+     * @param string              $connectionString
      * @param LoopInterface       $loop
      * @param ParserInterface     $parser
      * @param SerializerInterface $serializer
-     * @param string              $connectionString
+     * @param null|Connector      $connector
      */
     public function __construct(
         string $connectionString,
         LoopInterface $loop,
         ParserInterface $parser = null,
-        SerializerInterface $serializer = null
+        SerializerInterface $serializer = null,
+        ?Connector $connector = null
     ) {
         $this->commandQueue = new \SplDoublyLinkedList();
         $this->loop = $loop;
@@ -63,7 +66,7 @@ class DummyClient implements ListenerConnectionInterface
         $this->serializer = $serializer ?? $protocolFactory->createSerializer();
         $this->parser = $parser ?? $protocolFactory->createResponseParser();
 
-        $this->connection = new Connection($this->loop, $this, $connectionString);
+        $this->connection = new Connection($this->loop, $this, $connectionString, $connector);
     }
 
     /**
